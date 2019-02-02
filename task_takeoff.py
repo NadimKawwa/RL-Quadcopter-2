@@ -29,7 +29,7 @@ class Task_TakeOff():
     def get_reward(self):
         """Uses current pose of sim to return reward."""
         #squeeze rewards between [-1,1] using tan h
-        reward = np.tanh(1.0-0.002*(abs(self.sim.pose[:3] - self.target_pos))).sum()
+        reward = np.tanh(1.0-0.002*(abs(self.sim.pose[:3] - self.target_pos)).sum())
         #penalize unwanted rotations, we prefer linear movement of the drone
         #reward -= np.tanh(1.0-0.002*(abs(self.sim.pose[3:] - np.array([0., 0., 10.])))).sum()
         return reward
